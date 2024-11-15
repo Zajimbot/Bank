@@ -52,9 +52,17 @@ namespace Bank.Classes
                 this.moneyAccount -= input;
             }
         }
-        public void Translation ()
+        public void transfer(BankAccount otherAccoune, double summa)
         {
-
+            if(this.moneyAccount > summa)
+            {
+                otherAccoune.moneyAccount += summa;
+                this.moneyAccount -= summa;
+            }
+            else
+            {
+                //денег не достаточно для перевода позже отражу в интерфейсе
+            }
         }
 
 
