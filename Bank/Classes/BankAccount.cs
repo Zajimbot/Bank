@@ -15,7 +15,7 @@ namespace Bank.Classes
 
     }
     /// <summary>
-    /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status
+    /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod // Срок вклада в месецах, StatusS status
     /// </summary>
     public class BankAccount
     {
@@ -65,6 +65,7 @@ namespace Bank.Classes
                 if( this.moneyAccount > input)
                 this.moneyAccount -= input;
             }
+            this.СhangeStatus();
         }
         /// <summary>
         /// Перевод с в дургой банк
@@ -95,8 +96,14 @@ namespace Bank.Classes
             this.status = StatusS.сlosed;
         }
         /// <summary>
-        /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status
+        /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod // Срок вклада в месецах, StatusS status
         /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <param name="dateOpen"></param>
+        /// <param name="moneyAccount"></param>
+        /// <param name="depositOpen"></param>
+        /// <param name="depositPeriod"></param>
+        /// <param name="status"></param>
         public BankAccount(int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status)
         {
             this.accountNumber = accountNumber;

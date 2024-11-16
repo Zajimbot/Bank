@@ -14,6 +14,7 @@ namespace Bank.Classes
         private String name;
         private String surname;
         private String middleName;
+        private int passportSeries;
         private int passportNumber;
         private DateTime birthВate;
 
@@ -22,6 +23,7 @@ namespace Bank.Classes
             this.name = "";
             this.surname = "";
             this.middleName = "";
+            this.passportSeries = 0;
             this.passportNumber = 0;
             this.birthВate = DateTime.Now;
         }
@@ -34,11 +36,12 @@ namespace Bank.Classes
         /// <param name="middleName"></param>
         /// <param name="passportNumber"></param>
         /// <param name="birthВate"></param>
-        public Client(string name, string surname, string middleName, int passportNumber, DateTime birthВate)
+        public Client(string name, string surname, string middleName, int passportSeries, int passportNumber, DateTime birthВate)
         {
             this.name = name;
             this.surname = surname;
             this.middleName = middleName;
+            this.passportSeries = passportSeries;
             this.passportNumber = passportNumber;
             this.birthВate = birthВate;
         }
