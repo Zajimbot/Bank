@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Bank.Classes
 {
+    /// <summary>
+    /// string name, string surname, string middleName, int passportNumber, DateTime birthВate
+    /// </summary>
     internal class Client
     {
         public String name { get; set; }
@@ -21,6 +24,15 @@ namespace Bank.Classes
             this.passportNumber = 0;
             this.birthВate = DateTime.Now;
         }
+
+        /// <summary>
+        /// string name, string surname, string middleName, int passportNumber, DateTime birthВate
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="surname"></param>
+        /// <param name="middleName"></param>
+        /// <param name="passportNumber"></param>
+        /// <param name="birthВate"></param>
         public Client(string name, string surname, string middleName, int passportNumber, DateTime birthВate)
         {
             this.name = name;

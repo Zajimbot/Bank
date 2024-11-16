@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank.Classes
 {
-    /// <summary>
-    /// 
-    /// </summary>
+    
     public enum StatusS
     {
         open, //открыт 
@@ -16,7 +14,9 @@ namespace Bank.Classes
         bankrupt //банкрот
 
     }
-
+    /// <summary>
+    /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status
+    /// </summary>
     public class BankAccount
     {
 
@@ -27,19 +27,31 @@ namespace Bank.Classes
         public int depositPeriod { get; set; } // Срок вклада в месецах
         public string status { get; set; } //Статус 
 
+        /// <summary>
+        /// Считает день закрытия счета
+        /// </summary>
+        /// <returns></returns>
         private DateTime DepositClose()  // Дата окончания
         {
             DateTime close;
             close = this.depositOpen.AddDays(this.depositPeriod);
             return close;
         }
+        /// <summary>
+        /// Смена статусо от количества денег на счете
+        /// </summary>
         private void СhangeStatus()  // Изменение статуса
         {
             if (this.moneyAccount > 0)
                 status = Convert.ToString(StatusS.open);
-            if (this.moneyAccount < 0)
+            if (this.moneyAccount == 0)
                 status = Convert.ToString(StatusS.bankrupt);
         }
+        /// <summary>
+        /// inputOutput true - положить false - снять
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="inputOutput"></param>
         public void InputMani(double input, bool inputOutput) // Внесение снятие 
         {
             if (inputOutput)
@@ -52,6 +64,11 @@ namespace Bank.Classes
                 this.moneyAccount -= input;
             }
         }
+        /// <summary>
+        /// Перевод с в дургой банк
+        /// </summary>
+        /// <param name="otherAccoune"></param>
+        /// <param name="summa"></param>
         public void transfer(BankAccount otherAccoune, double summa)
         {
             if(this.moneyAccount > summa)
@@ -75,6 +92,9 @@ namespace Bank.Classes
             this.depositPeriod = 0;
             this.status = Convert.ToString( StatusS.сlosed);
         }
+        /// <summary>
+        /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status
+        /// </summary>
         public BankAccount(int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status)
         {
             this.accountNumber = accountNumber;

@@ -7,15 +7,15 @@
       "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\classes\\bankaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|c:\\users\\kartu\\desktop\\\u0443\u0447\u0435\u0431\u0430\\mdk0101\\bank\\bank\\classes\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\bank\\classes\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\classes\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|c:\\users\\kartu\\desktop\\\u0443\u0447\u0435\u0431\u0430\\mdk0101\\bank\\bank\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\bank\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|c:\\users\\kartu\\desktop\\\u0443\u0447\u0435\u0431\u0430\\mdk0101\\bank\\bank\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\bank\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -38,8 +38,7 @@
               "RelativeToolTip": "Bank\\Classes\\Client.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T15:50:37.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T15:50:37.675Z"
             },
             {
               "$type": "Document",
@@ -49,7 +48,7 @@
               "RelativeDocumentMoniker": "Bank\\Classes\\BankAccount.cs",
               "ToolTip": "C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\Bank\\Classes\\BankAccount.cs",
               "RelativeToolTip": "Bank\\Classes\\BankAccount.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAxwAkAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-15T15:42:53.358Z",
               "EditorCaption": ""
@@ -63,8 +62,7 @@
               "ToolTip": "C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\Bank\\MainWindow.xaml",
               "RelativeToolTip": "Bank\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-15T15:40:32.147Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T15:40:32.147Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "RelativeToolTip": "Bank\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T15:40:31.799Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T15:40:31.799Z"
             }
           ]
         }
