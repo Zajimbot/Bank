@@ -11,11 +11,12 @@ namespace Bank.Classes
     /// </summary>
     internal class Client
     {
-        public String name { get; set; }
-        public String surname { get; set; }
-        public String middleName { get; set; }
-        public int passportNumber { get; set; }
-        public DateTime birthВate { get; set; }
+        private String name;
+        private String surname;
+        private String middleName;
+        private int passportNumber;
+        private DateTime birthВate;
+
         public Client()
         {
             this.name = "";

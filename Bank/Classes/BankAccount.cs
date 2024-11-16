@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank.Classes
 {
-    
+       
     public enum StatusS
     {
         open, //открыт 
@@ -20,12 +20,12 @@ namespace Bank.Classes
     public class BankAccount
     {
 
-        public int accountNumber { get; set; } // номер счета
-        public DateTime dateOpen { get; set; } // Дата открытия счета
-        public double moneyAccount { get; set; } //Сумма на счету 
-        public DateTime depositOpen { get; set; } // Дата открытия вклада
-        public int depositPeriod { get; set; } // Срок вклада в месецах
-        public string status { get; set; } //Статус 
+        private int accountNumber; // номер счета
+        private DateTime dateOpen; // Дата открытия счета
+        private double moneyAccount; //Сумма на счету 
+        private DateTime depositOpen; // Дата открытия вклада
+        private int depositPeriod; // Срок вклада в месецах
+        private StatusS status;//Статус 
 
         /// <summary>
         /// Считает день закрытия счета
@@ -43,9 +43,11 @@ namespace Bank.Classes
         private void СhangeStatus()  // Изменение статуса
         {
             if (this.moneyAccount > 0)
-                status = Convert.ToString(StatusS.open);
+                status = StatusS.open;
             if (this.moneyAccount == 0)
-                status = Convert.ToString(StatusS.bankrupt);
+                status = StatusS.сlosed;
+            if (this.moneyAccount < 0)
+                status = StatusS.bankrupt;  
         }
         /// <summary>
         /// inputOutput true - положить false - снять
@@ -90,7 +92,7 @@ namespace Bank.Classes
             this.dateOpen = DateTime.Now;
             this.moneyAccount = 0;
             this.depositPeriod = 0;
-            this.status = Convert.ToString( StatusS.сlosed);
+            this.status = StatusS.сlosed;
         }
         /// <summary>
         /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status
@@ -102,7 +104,7 @@ namespace Bank.Classes
             this.moneyAccount = moneyAccount;
             this.depositOpen = depositOpen;
             this.depositPeriod = depositPeriod;
-            this.status = Convert.ToString( status);
+            this.status = status;
         }
     }
 }
