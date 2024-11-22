@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Xml.Linq;
 
 namespace Bank.Classes
 {
@@ -20,7 +22,7 @@ namespace Bank.Classes
     public class BankAccount
     {
 
-        private int accountNumber; // номер счета
+        public int AccountNumber; // номер счета
         private DateTime dateOpen; // Дата открытия счета
         private double moneyAccount; //Сумма на счету 
         private DateTime depositOpen; // Дата открытия вклада
@@ -34,7 +36,7 @@ namespace Bank.Classes
         private DateTime DepositClose()  // Дата окончания
         {
             DateTime close;
-            close = this.depositOpen.AddDays(this.depositPeriod);
+            close = this.depositOpen.AddMonths(this.depositPeriod);
             return close;
         }
         /// <summary>
@@ -59,13 +61,22 @@ namespace Bank.Classes
             if (inputOutput)
             {
                 this.moneyAccount += input;
+                this.СhangeStatus();
             }
             else
             {
-                if( this.moneyAccount > input)
-                this.moneyAccount -= input;
+                if( this.moneyAccount >= input)
+                {
+                    this.moneyAccount -= input;
+                    this.СhangeStatus();
+
+                }
+                else
+                MessageBox.Show("Не достаточно средств для перевода", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            this.СhangeStatus();
+           
+
         }
         /// <summary>
         /// Перевод с в дургой банк
@@ -73,23 +84,35 @@ namespace Bank.Classes
         /// <param name="otherAccoune"></param>
         /// <param name="summa"></param>
         public void transfer(BankAccount otherAccoune, double summa)
-        {
-            if(this.moneyAccount > summa)
-            {
-                otherAccoune.moneyAccount += summa;
-                this.moneyAccount -= summa;
-            }
-            else
-            {
-                //денег не достаточно для перевода позже отражу в интерфейсе
-            }
+        { 
+            this.InputMani(summa, false);
+            otherAccoune.InputMani(summa, true);
         }
 
+
+        /// <summary>
+        /// Временный результат 
+        /// </summary>
+        /// <param name="Account"></param>
+        /// <returns></returns>
+        public String Sresult ()
+        {
+            string result;
+
+            result = ( "Номер счета " + this.AccountNumber + Environment.NewLine
+                + "Дата открытия счета " + this.dateOpen.ToString("dd MMMM, yyyy") + Environment.NewLine
+                + "Дата открытия вклада " + this.depositOpen.ToString("dd MMMM, yyyy") + Environment.NewLine
+                + "Срок вклада " + this.depositPeriod + " Месецев" + Environment.NewLine
+                + "Сумма на счету " + this.moneyAccount + " ₽" + Environment.NewLine
+                + "Статус " + this.status );
+
+            return result;
+        }
 
 
         public BankAccount()
         {
-            this.accountNumber = 0;
+            this.AccountNumber = 0;
             this.dateOpen = DateTime.Now;
             this.moneyAccount = 0;
             this.depositPeriod = 0;
@@ -106,7 +129,7 @@ namespace Bank.Classes
         /// <param name="status"></param>
         public BankAccount(int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status)
         {
-            this.accountNumber = accountNumber;
+            this.AccountNumber = accountNumber;
             this.dateOpen = dateOpen;
             this.moneyAccount = moneyAccount;
             this.depositOpen = depositOpen;
