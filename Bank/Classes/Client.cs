@@ -15,7 +15,7 @@ namespace Bank.Classes
         private String surname;
         private String middleName;
         private int passportSeries;
-        public int PassportNumber;
+        private int passportNumber;
         private DateTime birthDate; //Дата рождения 
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Bank.Classes
             string result;
 
             result = ("ФИО " + this.surname + " " + this.name + " " + this.middleName + " " + Environment.NewLine
-                + "Паспортные данные " + this.passportSeries + " " + this.PassportNumber + Environment.NewLine
+                + "Паспортные данные " + this.passportSeries + " " + this.passportNumber + Environment.NewLine
                 + "Дата рождения " + this.birthDate.ToString("dd MMMM, yyyy") + Environment.NewLine);
 
             return result;
@@ -40,10 +40,11 @@ namespace Bank.Classes
             this.surname = "";
             this.middleName = "";
             this.passportSeries = 0;
-            this.PassportNumber = 0;
+            this.passportNumber = 0;
             this.birthDate = DateTime.Now;
         }
 
+        public int PassportNumber() { return passportNumber; }
         /// <summary>
         /// string name, string surname, string middleName, int passportNumber, DateTime birthВate
         /// </summary>
@@ -58,7 +59,7 @@ namespace Bank.Classes
             this.surname = surname;
             this.middleName = middleName;
             this.passportSeries = passportSeries;
-            this.PassportNumber = passportNumber;
+            this.passportNumber = passportNumber;
             this.birthDate = birthDate;
         }
     }

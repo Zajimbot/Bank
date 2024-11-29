@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\bank\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\bank\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|c:\\users\\kartu\\desktop\\\u0443\u0447\u0435\u0431\u0430\\mdk0101\\bank\\bank\\classes\\bankaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\classes\\bankaccount.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\bank\\classes\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\classes\\client.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\bank\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|c:\\users\\kartu\\desktop\\\u0443\u0447\u0435\u0431\u0430\\mdk0101\\bank\\bank\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|solutionrelative:bank\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70C9F553-760A-490A-9328-1CC76513DCD8}|Bank\\Bank.csproj|C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\bank\\dictionarypurpl.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -41,12 +41,11 @@
               "ToolTip": "C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\Bank\\DictionaryPurpl.xaml",
               "RelativeToolTip": "Bank\\DictionaryPurpl.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-11-20T16:55:02.73Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-20T16:55:02.73Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "BankAccount.cs",
               "DocumentMoniker": "C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\Bank\\Classes\\BankAccount.cs",
               "RelativeDocumentMoniker": "Bank\\Classes\\BankAccount.cs",
@@ -59,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Client.cs",
               "DocumentMoniker": "C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\Bank\\Classes\\Client.cs",
               "RelativeDocumentMoniker": "Bank\\Classes\\Client.cs",
@@ -67,12 +66,11 @@
               "RelativeToolTip": "Bank\\Classes\\Client.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAowDYAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-15T15:50:37.675Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-15T15:50:37.675Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\Bank\\MainWindow.xaml",
               "RelativeDocumentMoniker": "Bank\\MainWindow.xaml",
@@ -84,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\kartu\\Desktop\\\u0423\u0447\u0435\u0431\u0430\\Mdk0101\\Bank\\Bank\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "Bank\\MainWindow.xaml.cs",

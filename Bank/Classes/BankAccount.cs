@@ -22,7 +22,7 @@ namespace Bank.Classes
     public class BankAccount
     {
 
-        public int AccountNumber; // номер счета
+        private int accountNumber; // номер счета
         private DateTime dateOpen; // Дата открытия счета
         private double moneyAccount; //Сумма на счету 
         private DateTime depositOpen; // Дата открытия вклада
@@ -75,8 +75,11 @@ namespace Bank.Classes
                 MessageBox.Show("Не достаточно средств для перевода", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-           
+        }
 
+        public int AccauntN()
+        {
+            return this.accountNumber;
         }
         /// <summary>
         /// Перевод с в дургой банк
@@ -99,7 +102,7 @@ namespace Bank.Classes
         {
             string result;
 
-            result = ( "Номер счета " + this.AccountNumber + Environment.NewLine
+            result = ( "Номер счета " + this.accountNumber + Environment.NewLine
                 + "Дата открытия счета " + this.dateOpen.ToString("dd MMMM, yyyy") + Environment.NewLine
                 + "Дата открытия вклада " + this.depositOpen.ToString("dd MMMM, yyyy") + Environment.NewLine
                 + "Срок вклада " + this.depositPeriod + " Месецев" + Environment.NewLine
@@ -112,7 +115,7 @@ namespace Bank.Classes
 
         public BankAccount()
         {
-            this.AccountNumber = 0;
+            this.accountNumber = 0;
             this.dateOpen = DateTime.Now;
             this.moneyAccount = 0;
             this.depositPeriod = 0;
@@ -129,7 +132,7 @@ namespace Bank.Classes
         /// <param name="status"></param>
         public BankAccount(int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status)
         {
-            this.AccountNumber = accountNumber;
+            this.accountNumber = accountNumber;
             this.dateOpen = dateOpen;
             this.moneyAccount = moneyAccount;
             this.depositOpen = depositOpen;

@@ -79,7 +79,7 @@ namespace Bank
                     }
                     if (user2 != null)
                     {
-                        if (user2.PassportNumber == papassportNumber)
+                        if (user2.PassportNumber() == papassportNumber)
                         {
 
                             MessageBox.Show("Номер паспорта не может совподать", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -88,7 +88,7 @@ namespace Bank
                     }
                     if (account2 != null)
                     {
-                        if (account2.AccountNumber == accountNumber)
+                        if (account2.AccauntN() == accountNumber)
                         {
                             MessageBox.Show("Номер паспорта не может совподать", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                             return;
@@ -140,7 +140,7 @@ namespace Bank
                     }
                     if (user1 != null)
                     {
-                        if (user1.PassportNumber == papassportNumber)
+                        if (user1.PassportNumber() == papassportNumber)
                         {
 
                             MessageBox.Show("Номера паспорта не могут совподать", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -149,7 +149,7 @@ namespace Bank
                     }
                     if (account1 != null) 
                     {
-                        if (account1.AccountNumber == accountNumber)
+                        if (account1.AccauntN() == accountNumber)
                         {
                             MessageBox.Show("Номера аккаунта не могут совподать", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                             return;
