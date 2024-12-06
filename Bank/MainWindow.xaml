@@ -12,59 +12,72 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="2">
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <GroupBox  FontSize="25" Header="Account 1" >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+        <TabControl Grid.Column="2" >
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Margin="3" >transfer</TextBlock>
+                </TabItem.Header>
+                <Grid Grid.Column="2" Background="#d4a7f7">
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Transfer  X ₽" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="Transfer1TB" Grid.Row="0" Grid.Column="1" Margin="10" VerticalAlignment="Center" TextAlignment="Center" />
-                    <Button x:Name="Transfer1B" IsEnabled="False" Margin="50" Grid.ColumnSpan="2" Grid.Row="1" Content="Transfer to account 2" Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd" Click="TransferB_Click">
-                        <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="15"/>
-                        </Style>
-                        </Button.Resources>
-                    </Button>
+                    <GroupBox  FontSize="25" Header="Account 1" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Transfer  X ₽" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="Transfer1TB" Grid.Row="0" Grid.Column="1" Margin="10" VerticalAlignment="Center" TextAlignment="Center" />
+                            <Button x:Name="Transfer1B" IsEnabled="False" Margin="50" Grid.ColumnSpan="2" Grid.Row="1" Content="Transfer to account 2" Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd" Click="TransferB_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="15"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+
+                    </GroupBox>
+                    <GroupBox  FontSize="25" Header="Account 2" Grid.Row="1" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Transfer  X ₽" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="Transfer2TB" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" />
+                            <Button x:Name="Transfer2B" IsEnabled="False" Click="TransferB_Click" Margin="50" Grid.ColumnSpan="2" Grid.Row="1" Content="Transfer to account 1" Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="15"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                        </Grid>
+
+                    </GroupBox>
+
+
                 </Grid>
-
-            </GroupBox>
-            <GroupBox  FontSize="25" Header="Account 2" Grid.Row="1" >
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Text="Transfer  X ₽" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="Transfer2TB" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" />
-                    <Button x:Name="Transfer2B" IsEnabled="False" Click="TransferB_Click" Margin="50" Grid.ColumnSpan="2" Grid.Row="1" Content="Transfer to account 1" Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="15"/>
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-
-                </Grid>
-
-            </GroupBox>
-
-
-        </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Margin="3" >transfer</TextBlock>
+                </TabItem.Header>
+            </TabItem>
+        </TabControl>
+        
 
         <GroupBox Grid.Column="0" Grid.Row="0" FontSize="25" Header="Account 1"  >
             <Grid >

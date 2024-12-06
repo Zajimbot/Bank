@@ -53,7 +53,7 @@ namespace Bank
            
             DateTime dateOpen;
             DateTime depositOpen;
-            StatusS status;
+            Status status;
            
             if (Convert.ToString(button.Name) == "Registration1")
             {
@@ -77,7 +77,7 @@ namespace Bank
                         MessageBox.Show("Паспортные данные введены не коректно", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
-                    if (user2 != null)
+                    if ((object)user2 != null)
                     {
                         if (user2.PassportNumber() == papassportNumber)
                         {
@@ -86,7 +86,7 @@ namespace Bank
                             return;
                         }
                     }
-                    if (account2 != null)
+                    if ((object)account2 != null)
                     {
                         if (account2.AccauntN() == accountNumber)
                         {
@@ -105,7 +105,7 @@ namespace Bank
                 string middleName = MiddleName.Text;
                 dateOpen = DateTime.Now; // Обьявления Текущей даты и статуса ниже 
                 depositOpen = DateTime.Now;
-                status = StatusS.open;
+                status = Status.Open;
                 account1 = new BankAccount(accountNumber, dateOpen, moneyAccount, depositOpen, depositPeriod, status); //два конструктора 
 
                 user1 = new Client(name, surname, middleName, passportSeries, papassportNumber, birthDate);
@@ -138,7 +138,7 @@ namespace Bank
                         MessageBox.Show("Паспортные данные введены не коректно", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
-                    if (user1 != null)
+                    if ((object)user1 != null)
                     {
                         if (user1.PassportNumber() == papassportNumber)
                         {
@@ -147,7 +147,7 @@ namespace Bank
                             return;
                         }
                     }
-                    if (account1 != null) 
+                    if ((object)account1 != null) 
                     {
                         if (account1.AccauntN() == accountNumber)
                         {
@@ -166,7 +166,7 @@ namespace Bank
                 string middleName = MiddleName2.Text;
                 dateOpen = DateTime.Now; // Обьявления Текущей даты и статуса ниже 
                 depositOpen = DateTime.Now;
-                status = StatusS.open;
+                status = Status.Open;
 
               
                 account2 = new BankAccount(accountNumber, dateOpen, moneyAccount, depositOpen, depositPeriod, status); //два конструктора 
@@ -180,7 +180,7 @@ namespace Bank
                 User2TB.Text = result;
                 button.IsEnabled = false;
             }
-            if(account1 != null && account2 != null)
+            if((object)account1 != null && (object)account2 != null)
             {
                 Transfer1B.IsEnabled = true;
                 Transfer2B.IsEnabled = true;
@@ -206,7 +206,10 @@ namespace Bank
                     MessageBox.Show(error.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                account1.transfer(account2, summa);
+                //account1.transfer(account2, summa);
+
+                account1 -= summa;
+                account2 += summa;
             }
             else
             {
@@ -223,7 +226,10 @@ namespace Bank
                     MessageBox.Show(error.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                account2.transfer(account1, summa);
+                //account2.transfer(account1, summa);
+                
+                account2 -= summa;
+                account1 += summa;
             }
             String result;
             result = Result(user1, account1);

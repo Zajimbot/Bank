@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,15 @@ using System.Xml.Linq;
 namespace Bank.Classes
 {
        
-    public enum StatusS
+    public enum Status
     {
-        open, //открыт 
-        сlosed, // закрыт 
-        bankrupt //банкрот
+        Open, //открыт 
+        Closed, // закрыт 
+        Bankrupt //банкрот
 
     }
     /// <summary>
-    /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod // Срок вклада в месецах, StatusS status
+    /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod // Срок вклада в месецах, Status status
     /// </summary>
     public class BankAccount
     {
@@ -27,7 +28,13 @@ namespace Bank.Classes
         private double moneyAccount; //Сумма на счету 
         private DateTime depositOpen; // Дата открытия вклада
         private int depositPeriod; // Срок вклада в месецах
-        private StatusS status;//Статус 
+        private Status status;//Статус 
+
+        public double MoneyAccount
+        {
+            get { return this.moneyAccount; }
+            set { this.moneyAccount = value; }
+        }
 
         /// <summary>
         /// Считает день закрытия счета
@@ -45,11 +52,11 @@ namespace Bank.Classes
         private void СhangeStatus()  // Изменение статуса
         {
             if (this.moneyAccount > 0)
-                status = StatusS.open;
+                status = Status.Open;
             if (this.moneyAccount == 0)
-                status = StatusS.сlosed;
+                status = Status.Closed;
             if (this.moneyAccount < 0)
-                status = StatusS.bankrupt;  
+                status = Status.Bankrupt;  
         }
         /// <summary>
         /// inputOutput true - положить false - снять
@@ -101,7 +108,7 @@ namespace Bank.Classes
         public String Sresult ()
         {
             string result;
-
+             
             result = ( "Номер счета " + this.accountNumber + Environment.NewLine
                 + "Дата открытия счета " + this.dateOpen.ToString("dd MMMM, yyyy") + Environment.NewLine
                 + "Дата открытия вклада " + this.depositOpen.ToString("dd MMMM, yyyy") + Environment.NewLine
@@ -112,17 +119,74 @@ namespace Bank.Classes
             return result;
         }
 
+        public static BankAccount operator +(BankAccount first, BankAccount second)
+        {
+            first.InputMani(second.moneyAccount, true);
+            second.InputMani(second.moneyAccount, false);
 
+            return first;
+        }
+
+        public static BankAccount operator %(BankAccount first, double percent)
+        {
+            percent = percent / 100;
+
+            first.moneyAccount *= percent;
+
+            return first;
+        }
+
+        public static BankAccount operator ++(BankAccount bankAccount)
+        {
+            bankAccount.moneyAccount *= 0.3; //0.3 Процента в месяц
+
+            return bankAccount;
+        }
+
+        public static bool operator ==(BankAccount first, BankAccount second)
+        {
+            if (first.moneyAccount == second.moneyAccount ) 
+                return true; 
+            return false;
+        }
+
+        public static bool operator !=(BankAccount first, BankAccount second)
+        {
+            if (first.moneyAccount == second.moneyAccount)
+                return false;
+            return true;
+        }
+        public static BankAccount operator -(BankAccount bankAccount, double minus)
+        {
+            if (bankAccount.moneyAccount >= minus)
+            {
+                bankAccount.moneyAccount -= minus; //0.3 Процента в месяц
+            }
+            else
+            {
+                MessageBox.Show("Не достаточно средств для перевода", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return bankAccount;
+            }
+            return bankAccount;
+        }
+
+        public static BankAccount operator +(BankAccount bankAccount, double plas)
+        {
+            
+                bankAccount.moneyAccount += plas; //0.3 Процента в месяц
+
+            return bankAccount;
+        }
         public BankAccount()
         {
             this.accountNumber = 0;
             this.dateOpen = DateTime.Now;
             this.moneyAccount = 0;
             this.depositPeriod = 0;
-            this.status = StatusS.сlosed;
+            this.status = Status.Closed;
         }
         /// <summary>
-        /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod // Срок вклада в месецах, StatusS status
+        /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod // Срок вклада в месецах, Status status
         /// </summary>
         /// <param name="accountNumber"></param>
         /// <param name="dateOpen"></param>
@@ -130,7 +194,7 @@ namespace Bank.Classes
         /// <param name="depositOpen"></param>
         /// <param name="depositPeriod"></param>
         /// <param name="status"></param>
-        public BankAccount(int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, StatusS status)
+        public BankAccount(int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod, Status status)
         {
             this.accountNumber = accountNumber;
             this.dateOpen = dateOpen;
