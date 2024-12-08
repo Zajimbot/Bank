@@ -15,71 +15,79 @@
         <TabControl Grid.Column="2" >
             <TabItem>
                 <TabItem.Header>
-                    <TextBlock Margin="3" >transfer</TextBlock>
+                    <TextBlock Margin="3" >Select account</TextBlock>
                 </TabItem.Header>
                 <Grid Grid.Column="2" Background="#d4a7f7">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <GroupBox  FontSize="25" Header="Account 1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <GroupBox Grid.Row="0" FontSize="25" Header="Select account" Grid.ColumnSpan="4" >
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
+
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition Height="4*"/>
                             </Grid.RowDefinitions>
-                            <TextBlock Text="Transfer  X ₽" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBox x:Name="Transfer1TB" Grid.Row="0" Grid.Column="1" Margin="10" VerticalAlignment="Center" TextAlignment="Center" />
-                            <Button x:Name="Transfer1B" IsEnabled="False" Margin="50" Grid.ColumnSpan="2" Grid.Row="1" Content="Transfer to account 2" Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd" Click="TransferB_Click">
+                            <TextBlock Text="Select a user" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+                            <ComboBox Grid.Column="1" Margin="5" x:Name="ComboList" VerticalAlignment="Center" Grid.Row="1"/>
+                            <Button x:Name="ButtonNowUser" Margin="5" Click="ButtonListR_Click" Grid.Row="2" Content="Вывести информацию о выбранном" Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="15"/>
                                     </Style>
                                 </Button.Resources>
                             </Button>
+                            <TextBox x:Name="TextNowUser" IsReadOnly="True"  Grid.Row="3"/>
                         </Grid>
-
                     </GroupBox>
-                    <GroupBox  FontSize="25" Header="Account 2" Grid.Row="1" >
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="Transfer  X ₽" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBox x:Name="Transfer2TB" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" />
-                            <Button x:Name="Transfer2B" IsEnabled="False" Click="TransferB_Click" Margin="50" Grid.ColumnSpan="2" Grid.Row="1" Content="Transfer to account 1" Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="15"/>
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-
-                        </Grid>
-
-                    </GroupBox>
-
-
                 </Grid>
             </TabItem>
             <TabItem>
                 <TabItem.Header>
                     <TextBlock Margin="3" >transfer</TextBlock>
                 </TabItem.Header>
+                <Grid Background="#d4a7f7">
+                    <GroupBox Grid.Row="1" FontSize="25" Header="Transfer" >
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="170"/>
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="Transfer  X ₽" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBox x:Name="Transfer1TB" Grid.Row="0" Grid.Column="1" Margin="10" VerticalAlignment="Center" TextAlignment="Center" />
+
+                            <TextBlock Text="Transfer from " Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <ComboBox Grid.Column="1" Margin="5" x:Name="ComboListOUT" VerticalAlignment="Center" Grid.Row="1"/>
+                            <TextBlock Text="Transfer to " Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <ComboBox Grid.Column="1" Margin="5" x:Name="ComboListIN" VerticalAlignment="Center" Grid.Row="2"/>
+
+                            <Button x:Name="Transfer" Margin="50" Grid.ColumnSpan="2" Grid.Row="3" Content="Transfer to account"  Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd" Click="TransferB_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="15"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+
             </TabItem>
         </TabControl>
-        
 
-        <GroupBox Grid.Column="0" Grid.Row="0" FontSize="25" Header="Account 1"  >
+
+        <GroupBox Grid.Column="0" Grid.Row="0" FontSize="25" Header="Account registration"  >
             <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -96,7 +104,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
-                    
+
                     <RowDefinition Height="6*"/>
                 </Grid.RowDefinitions>
                 <TextBlock  Text="Name"  Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -133,60 +141,8 @@
                 <TextBox FontSize="20"  x:Name="User1TB" IsReadOnly="True" Grid.ColumnSpan="2" Grid.Row="12"/>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="1" FontSize="25" Header="Account 2"  >
-            <Grid  >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-
-                    <RowDefinition Height="6*"/>
-                </Grid.RowDefinitions>
-                <TextBlock  Text="Name"  Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBox  x:Name="Name2" Text="НеАртур" Grid.Column="1" Grid.Row="1" Margin="4" BorderBrush="#8800dd" TextAlignment="Center"/>
-                <TextBlock  Text="Surname" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBox  x:Name="Surname2" Text="НеКалимуллин" Grid.Column="1" Grid.Row="0" Margin="4" BorderBrush="#8800dd" TextAlignment="Center"/>
-                <TextBlock  Text="Middle Name" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBox  x:Name="MiddleName2" Text="НеИрекович" Grid.Column="1" Grid.Row="2" Margin="4" BorderBrush="#8800dd" TextAlignment="Center"/>
-                <TextBlock  Text="Passport series" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBox  x:Name="PassportSeries2" Text="1234" Grid.Column="1" Grid.Row="3" Margin="4" BorderBrush="#8800dd" TextAlignment="Center"/>
-                <TextBlock  Text="Passport number" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBox  x:Name="PassportNumber2" Text="123456" Grid.Column="1" Grid.Row="4" Margin="4" BorderBrush="#8800dd" TextAlignment="Center"/>
-                <TextBlock  Text="Вirth Date" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <DatePicker Name="Вirth2" Grid.Column="1" Grid.Row="5"  VerticalAlignment="Center" HorizontalAlignment="Center" >
-                    <DatePicker.Resources>
-                        <Style TargetType="DatePickerTextBox">
-                            <Setter Property="IsReadOnly" Value="True"/>
-                        </Style>
-                    </DatePicker.Resources>
-                </DatePicker>
-                <!--<TextBox  x:Name="ВirthDate2" Grid.Column="1" Grid.Row="5" Margin="4" BorderBrush="#8800dd" TextAlignment="Center"/>-->
-                <TextBlock  Text="Account Number" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBox  x:Name="AccountNumber2" Text="1" Grid.Column="1" Grid.Row="6" Margin="4" BorderBrush="#8800dd" TextAlignment="Center"/>
-                <TextBlock  Text="Money Account" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBox  x:Name="MoneyAccount2" Text="123" Grid.Column="1" Grid.Row="7" Margin="4" BorderBrush="#8800dd" TextAlignment="Center"/>
-                <TextBlock  Text="Deposit Period (MM)" Grid.Column="0" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                <TextBox  x:Name="DepositPeriod2" Text="12" Grid.Column="1" Grid.Row="8" Margin="4" BorderBrush="#8800dd" TextAlignment="Center"/>
-                <Button x:Name="Registration2" Content="Registration" Grid.Row="9" Grid.ColumnSpan="2" Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd" Click="Registration_Click">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="15"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
-                <TextBox  FontSize="20" x:Name="User2TB" IsReadOnly="True" Grid.ColumnSpan="2" Grid.Row="12"/>
-            </Grid>
+        <GroupBox Grid.Column="1" FontSize="25" Header="Account">
+            <TextBox x:Name="ListR"   FontSize="20" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
         </GroupBox>
 
     </Grid>

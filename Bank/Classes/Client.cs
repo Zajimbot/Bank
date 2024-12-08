@@ -34,6 +34,15 @@ namespace Bank.Classes
             return result;
         }
 
+        public String FI()
+        {
+            string result;
+
+            result = this.surname + " " + this.name;
+
+            return result;
+        }
+
         public Client()
         {
             this.name = "";

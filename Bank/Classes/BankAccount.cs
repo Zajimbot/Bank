@@ -63,12 +63,13 @@ namespace Bank.Classes
         /// </summary>
         /// <param name="input"></param>
         /// <param name="inputOutput"></param>
-        public void InputMani(double input, bool inputOutput) // Внесение снятие 
+        public bool InputMani(double input, bool inputOutput) // Внесение снятие 
         {
             if (inputOutput)
             {
                 this.moneyAccount += input;
                 this.СhangeStatus();
+                return true;
             }
             else
             {
@@ -76,11 +77,11 @@ namespace Bank.Classes
                 {
                     this.moneyAccount -= input;
                     this.СhangeStatus();
-
+                    return true;
                 }
                 else
                 MessageBox.Show("Не достаточно средств для перевода", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                return false;
             }
         }
 
@@ -93,9 +94,9 @@ namespace Bank.Classes
         /// </summary>
         /// <param name="otherAccoune"></param>
         /// <param name="summa"></param>
-        public void transfer(BankAccount otherAccoune, double summa)
+        public void Transfer(BankAccount otherAccoune, double summa)
         { 
-            this.InputMani(summa, false);
+            if(this.InputMani(summa, false))
             otherAccoune.InputMani(summa, true);
         }
 
@@ -160,7 +161,7 @@ namespace Bank.Classes
         {
             if (bankAccount.moneyAccount >= minus)
             {
-                bankAccount.moneyAccount -= minus; //0.3 Процента в месяц
+                bankAccount.moneyAccount -= minus; 
             }
             else
             {
@@ -173,7 +174,7 @@ namespace Bank.Classes
         public static BankAccount operator +(BankAccount bankAccount, double plas)
         {
             
-                bankAccount.moneyAccount += plas; //0.3 Процента в месяц
+                bankAccount.moneyAccount += plas; 
 
             return bankAccount;
         }
