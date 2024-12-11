@@ -28,6 +28,7 @@ namespace Bank
         }
         List<BankAccount> bankAccountsL = new List<BankAccount>();
         List<Client> clients = new List<Client>();
+        List<Transaction> transactionsL = new List<Transaction>();
 
 
         private String Result(Client user, BankAccount account)
@@ -50,6 +51,13 @@ namespace Bank
                 ListR.Text += tuple.item2.Sresult() ;
                 ListR.Text += tuple.item1.Sresult() + Environment.NewLine + "***********************" + Environment.NewLine;
             }
+            TransactionsList.Text = String.Empty;
+
+            foreach (var tuple in transactionsL)
+            {
+                TransactionsList.Text += tuple.Sresult() + Environment.NewLine + "***********************" + Environment.NewLine; ;
+            }
+
         }
 
         private void AddComboBox(Client user, BankAccount account)
@@ -57,11 +65,12 @@ namespace Bank
             ComboList.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
             ComboListOUT.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
             ComboListIN.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
+            ComboListTrans.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
         }
        
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
-            Button button = e.Source as Button;
+           
 
             int accountNumber;
             double moneyAccount;
@@ -97,7 +106,7 @@ namespace Bank
                 {
                     if (accountNumber == item.AccauntN())
                     {
-                        MessageBox.Show("Номер паспорта не может совподать", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Номер акаунта не может совподать", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
                 }
@@ -150,13 +159,21 @@ namespace Bank
                 MessageBox.Show("Нельзя выбрать одинаковые счета", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
+            int input;
+            int output;
             try
             {
                 summa = Convert.ToDouble(Transfer1TB.Text);
+                input = ComboListIN.SelectedIndex;
+
+                output = ComboListOUT.SelectedIndex;
+
                 if (summa < 0)
                 {
                     MessageBox.Show("Сумма для перевода не может быть отрицательной", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Transaction transaction = new Transaction(NamingOperation.Transfer, TransactStatus.NotCompleted,summa, bankAccountsL[input].AccauntN());
+                    Transaction transaction2 = new Transaction(NamingOperation.Refill, TransactStatus.NotCompleted, summa, bankAccountsL[output].AccauntN());
+                    return;
                 }
 
             }
@@ -166,11 +183,23 @@ namespace Bank
                 return;
             }
 
-            int input = ComboListIN.SelectedIndex;
-            int output = ComboListOUT.SelectedIndex;
+           
 
-            bankAccountsL[output].Transfer(bankAccountsL[input], summa);
-
+            if(bankAccountsL[output].Transfer(bankAccountsL[input], summa))
+            {
+                Transaction transaction = new Transaction(NamingOperation.Transfer, TransactStatus.Completed, summa, bankAccountsL[input].AccauntN());
+                transactionsL.Add(transaction);
+                Transaction transaction2 = new Transaction(NamingOperation.Refill, TransactStatus.Completed, summa, bankAccountsL[output].AccauntN());
+                transactionsL.Add(transaction2);
+            }
+            else
+            {
+                Transaction transaction = new Transaction(NamingOperation.Transfer, TransactStatus.NotCompleted, summa, bankAccountsL[input].AccauntN());
+                transactionsL.Add(transaction);
+                Transaction transaction2 = new Transaction(NamingOperation.Refill, TransactStatus.NotCompleted, summa, bankAccountsL[output].AccauntN());
+                transactionsL.Add(transaction2);
+            }
+           
 
             OutListBankAccounts();
         }
@@ -185,6 +214,69 @@ namespace Bank
             int index = ComboList.SelectedIndex;
             TextNowUser.Text += clients[index].Sresult() + Environment.NewLine;
             TextNowUser.Text = bankAccountsL[index].Sresult();
+        }
+
+        private void ManiTransaction_Click(object sender, RoutedEventArgs e)
+        {
+            if (ComboListTrans.SelectedIndex == -1)
+            {
+                MessageBox.Show("Комбобокс пустой", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            int index = ComboListTrans.SelectedIndex;
+
+            double summa;
+            Transaction transaction;
+            try
+            {
+
+                if (TopAccountText.Text != "" && WithdrawMoney.Text != "")
+                {
+                    MessageBox.Show("Нельзя одновременно пополнить и снять деньги со счета", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (TopAccountText.Text == "" && WithdrawMoney.Text == "")
+                {
+                    MessageBox.Show("Поля не заполнены", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                if (TopAccountText.Text != "")
+                {
+                    summa = Convert.ToDouble(TopAccountText.Text);
+                    transaction = new Transaction(NamingOperation.Refill, TransactStatus.Completed, summa, bankAccountsL[index].AccauntN());
+                    transactionsL.Add(transaction);
+                }
+                else
+                {
+                    summa = Convert.ToDouble(WithdrawMoney.Text);
+                    if(summa <= bankAccountsL[index].MoneyAccount)
+                    {
+                        summa = summa * (-1);
+                        transaction = new Transaction(NamingOperation.Withdrawal, TransactStatus.Completed, summa * -1, bankAccountsL[index].AccauntN());
+                        transactionsL.Add(transaction);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Недостаточно средств", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        transaction = new Transaction(NamingOperation.Withdrawal, TransactStatus.NotCompleted, summa * -1, bankAccountsL[index].AccauntN());
+                        transactionsL.Add(transaction);
+                        return;
+                    }
+                }
+
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
+            bankAccountsL[index] += summa;
+            
+            OutListBankAccounts();
         }
     }
 }

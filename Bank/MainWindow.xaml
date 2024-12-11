@@ -84,6 +84,58 @@
                 </Grid>
 
             </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Margin="3" >Transactions</TextBlock>
+                </TabItem.Header>
+                <Grid Background="#d4a7f7">
+
+
+                    <GroupBox Grid.Row="1" FontSize="25" Header="Transactions">
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+            
+                        <TextBlock Text="Select a user" VerticalAlignment="Center" HorizontalAlignment="Center"  />
+                        <ComboBox Grid.Column="1" Margin="5" x:Name="ComboListTrans" VerticalAlignment="Center" Grid.Row="0"/>
+
+                            <TextBlock Text="Refill account" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Row="1"/>
+                        <TextBox x:Name="TopAccountText" Grid.Row="1" Grid.Column="1" Margin="4 0 4 0" BorderBrush="#8800dd" VerticalAlignment="Center" TextAlignment="Center"/>
+
+                        <TextBlock Text="Withdraw money" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Row="2"/>
+                        <TextBox x:Name="WithdrawMoney" Grid.Row="2" Grid.Column="1" Margin="4 0 4 0" BorderBrush="#8800dd" VerticalAlignment="Center" TextAlignment="Center"/>
+
+                            <Button x:Name="ManiTransaction" Content="Transaction" Grid.Row="9" Grid.ColumnSpan="2" Foreground ="#000"  Background="#AAffFF" BorderBrush="#8800dd" Click="ManiTransaction_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="15"/>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+
+                        </Grid>
+                    
+                </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Margin="3" >Transaction List</TextBlock>
+                </TabItem.Header>
+                <Grid Background="#d4a7f7" >
+                    <GroupBox Grid.Row="1" FontSize="25" Header="Transactions list">
+                        <TextBox  x:Name="TransactionsList" IsReadOnly="True"  FontSize="20" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
         </TabControl>
 
 
@@ -142,7 +194,7 @@
             </Grid>
         </GroupBox>
         <GroupBox Grid.Column="1" FontSize="25" Header="Account">
-            <TextBox x:Name="ListR"   FontSize="20" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            <TextBox x:Name="ListR" IsReadOnly="True"  FontSize="20" ScrollViewer.VerticalScrollBarVisibility="Auto" />
         </GroupBox>
 
     </Grid>

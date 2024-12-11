@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using System.Xml.Linq;
 
 namespace Bank.Classes
@@ -94,10 +95,18 @@ namespace Bank.Classes
         /// </summary>
         /// <param name="otherAccoune"></param>
         /// <param name="summa"></param>
-        public void Transfer(BankAccount otherAccoune, double summa)
+        public bool Transfer(BankAccount otherAccoune, double summa)
         { 
+
             if(this.InputMani(summa, false))
-            otherAccoune.InputMani(summa, true);
+            {
+                otherAccoune.InputMani(summa, true);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
 
