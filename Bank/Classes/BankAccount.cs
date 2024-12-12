@@ -19,7 +19,7 @@ namespace Bank.Classes
 
     }
     /// <summary>
-    /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod // Срок вклада в месецах, Status status
+    /// int accountNumber, DateT dateOpen, double moneyAccount, DateT depositOpen, int depositPeriod // Срок вклада в месецах, Status status
     /// </summary>
     public class BankAccount
     {
@@ -196,7 +196,7 @@ namespace Bank.Classes
             this.status = Status.Closed;
         }
         /// <summary>
-        /// int accountNumber, DateTime dateOpen, double moneyAccount, DateTime depositOpen, int depositPeriod // Срок вклада в месецах, Status status
+        /// int accountNumber, DateT dateOpen, double moneyAccount, DateT depositOpen, int depositPeriod // Срок вклада в месецах, Status status
         /// </summary>
         /// <param name="accountNumber"></param>
         /// <param name="dateOpen"></param>

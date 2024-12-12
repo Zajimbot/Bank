@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Bank.Classes
 {
     /// <summary>
-    /// string name, string surname, string middleName, int passportNumber, DateTime birthВate
+    /// string name, string surname, string middleName, int passportNumber, DateT birthВate
     /// </summary>
     internal class Client
     {
@@ -55,7 +55,7 @@ namespace Bank.Classes
 
         public int PassportNumber() { return passportNumber; }
         /// <summary>
-        /// string name, string surname, string middleName, int passportNumber, DateTime birthВate
+        /// string name, string surname, string middleName, int passportNumber, DateT birthВate
         /// </summary>
         /// <param name="name"></param>
         /// <param name="surname"></param>

@@ -24,13 +24,25 @@ namespace Bank.Classes
         private NamingOperation operation;
         private TransactStatus transactStatus;
         private double summa;
-        private int accauntNumber;
-        private DateTime dateTime;
+        private int accauntNumberT;
+        private DateTime dateT;
 
         public NamingOperation Operation
         {
             get { return operation; }
-            set { operation = value; }
+        }
+
+        public TransactStatus TransactStatus
+        {
+            get { return transactStatus; }
+        }
+        public int AccauntNumberT
+        { 
+            get { return accauntNumberT; }
+        }
+        public DateTime DateT
+        {
+            get { return dateT; }
         }
 
         public String Sresult ()
@@ -40,8 +52,8 @@ namespace Bank.Classes
             result = "Наименование операции " + operation + Environment.NewLine
                 + "Сумма " + summa + Environment.NewLine
                 + "Статус операции " + transactStatus + Environment.NewLine
-                + "Номер акаунта " + accauntNumber + Environment.NewLine 
-                + "Дата " + dateTime;
+                + "Номер акаунта " + accauntNumberT + Environment.NewLine 
+                + "Дата " + dateT;
 
             return result;
         }
@@ -51,8 +63,8 @@ namespace Bank.Classes
             this.operation = operation;
             this.transactStatus = transactStatus;
             this.summa = summa;
-            this.accauntNumber = accauntNumber;
-            this.dateTime = DateTime.Now; 
+            this.accauntNumberT = accauntNumber;
+            this.dateT = DateTime.Now; 
         }
     }
 }

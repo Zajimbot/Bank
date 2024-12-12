@@ -66,6 +66,7 @@ namespace Bank
             ComboListOUT.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
             ComboListIN.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
             ComboListTrans.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
+            ComboListSort.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
         }
        
         private void Registration_Click(object sender, RoutedEventArgs e)
@@ -171,8 +172,9 @@ namespace Bank
                 if (summa < 0)
                 {
                     MessageBox.Show("Сумма для перевода не может быть отрицательной", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    Transaction transaction = new Transaction(NamingOperation.Transfer, TransactStatus.NotCompleted,summa, bankAccountsL[input].AccauntN());
-                    Transaction transaction2 = new Transaction(NamingOperation.Refill, TransactStatus.NotCompleted, summa, bankAccountsL[output].AccauntN());
+                    //Transaction transaction = new Transaction(NamingOperation.Transfer, TransactStatus.NotCompleted,summa, bankAccountsL[input].AccauntN());  //Ненадо
+                    //Transaction transaction2 = new Transaction(NamingOperation.Refill, TransactStatus.NotCompleted, summa, bankAccountsL[output].AccauntN());
+                    //OutListBankAccounts();
                     return;
                 }
 
@@ -187,16 +189,16 @@ namespace Bank
 
             if(bankAccountsL[output].Transfer(bankAccountsL[input], summa))
             {
-                Transaction transaction = new Transaction(NamingOperation.Transfer, TransactStatus.Completed, summa, bankAccountsL[input].AccauntN());
+                Transaction transaction = new Transaction(NamingOperation.Refill, TransactStatus.Completed, summa, bankAccountsL[input].AccauntN());
                 transactionsL.Add(transaction);
-                Transaction transaction2 = new Transaction(NamingOperation.Refill, TransactStatus.Completed, summa, bankAccountsL[output].AccauntN());
+                Transaction transaction2 = new Transaction(NamingOperation.Transfer, TransactStatus.Completed, summa, bankAccountsL[output].AccauntN());
                 transactionsL.Add(transaction2);
             }
             else
             {
-                Transaction transaction = new Transaction(NamingOperation.Transfer, TransactStatus.NotCompleted, summa, bankAccountsL[input].AccauntN());
+                Transaction transaction = new Transaction(NamingOperation.Refill, TransactStatus.NotCompleted, summa, bankAccountsL[input].AccauntN());
                 transactionsL.Add(transaction);
-                Transaction transaction2 = new Transaction(NamingOperation.Refill, TransactStatus.NotCompleted, summa, bankAccountsL[output].AccauntN());
+                Transaction transaction2 = new Transaction(NamingOperation.Transfer, TransactStatus.NotCompleted, summa, bankAccountsL[output].AccauntN());
                 transactionsL.Add(transaction2);
             }
            
@@ -262,6 +264,7 @@ namespace Bank
                         MessageBox.Show("Недостаточно средств", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                         transaction = new Transaction(NamingOperation.Withdrawal, TransactStatus.NotCompleted, summa * -1, bankAccountsL[index].AccauntN());
                         transactionsL.Add(transaction);
+                        OutListBankAccounts();
                         return;
                     }
                 }
@@ -277,6 +280,91 @@ namespace Bank
             bankAccountsL[index] += summa;
             
             OutListBankAccounts();
+        }
+
+        private void TransuctSort_Click(object sender, RoutedEventArgs e)
+        {
+            
+            Button button = e.Source as Button;
+
+            TransactionsList.Text = string.Empty;
+
+            int day = 0;
+
+            if (DayAdd.Text != "")
+            {
+                
+                try
+                {
+                    day = Convert.ToInt32(DayAdd.Text);
+
+                    if (day <= 0)
+                    {
+                        MessageBox.Show("Количество дней не может быть меньше 0", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+          
+
+           
+
+            if (button.Name == "All")
+            {
+
+                foreach (Transaction transaction in transactionsL)
+                {
+                    TransactionsList.Text += transaction.Sresult() + Environment.NewLine + "***********************" + Environment.NewLine;
+                }
+            }
+            else 
+            {
+                string transact;
+                int accaunNum;
+
+                if(ComboListSortTransact.SelectedIndex == -1 || ComboListSort.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Комбобокс пустой", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return ;
+                }
+
+                transact = Convert.ToString(ComboListSortTransact.SelectionBoxItem);
+
+                accaunNum = bankAccountsL[ComboListSort.SelectedIndex].AccauntN();
+
+                foreach (Transaction transaction in transactionsL) // Для проверки можно перевести время на пк
+                {
+                    if (Convert.ToString(transaction.Operation) == transact && transaction.AccauntNumberT == accaunNum )
+                    {
+                        if(day != 0)
+                        {
+                            if (transaction.DateT > DateTime.Now.AddDays(-day))
+                                TransactionsList.Text += transaction.Sresult() + Environment.NewLine + "***********************" + Environment.NewLine;
+                        }
+                        else
+                        {
+                            TransactionsList.Text += transaction.Sresult() + Environment.NewLine + "***********************" + Environment.NewLine;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void Del_Click(object sender, RoutedEventArgs e)
+        {
+            
+            transactionsL.RemoveAll(x => x.TransactStatus == TransactStatus.NotCompleted);
+            TransactionsList.Text = string.Empty;
+            foreach (Transaction transaction in transactionsL)
+            {
+                TransactionsList.Text += transaction.Sresult() + Environment.NewLine + "***********************" + Environment.NewLine;
+            }
         }
     }
 }
