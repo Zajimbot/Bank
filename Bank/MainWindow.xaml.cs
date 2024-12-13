@@ -62,11 +62,11 @@ namespace Bank
 
         private void AddComboBox(Client user, BankAccount account)
         {
-            ComboList.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
-            ComboListOUT.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
-            ComboListIN.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
-            ComboListTrans.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
-            ComboListSort.Items.Add(user.FI() + Environment.NewLine + "Accaunt namber " + account.AccauntN());
+            ComboList.Items.Add(user.FI() + Environment.NewLine + "Account namber " + account.AccauntN());
+            ComboListOUT.Items.Add(user.FI() + Environment.NewLine + "Account namber " + account.AccauntN());
+            ComboListIN.Items.Add(user.FI() + Environment.NewLine + "Account namber " + account.AccauntN());
+            ComboListTrans.Items.Add(user.FI() + Environment.NewLine + "Account namber " + account.AccauntN());
+            ComboListSort.Items.Add(user.FI() + Environment.NewLine + "Account namber " + account.AccauntN());
         }
        
         private void Registration_Click(object sender, RoutedEventArgs e)
