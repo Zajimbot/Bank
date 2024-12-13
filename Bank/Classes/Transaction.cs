@@ -50,7 +50,7 @@ namespace Bank.Classes
             string result;
 
             result = "Наименование операции " + operation + Environment.NewLine
-                + "Сумма " + summa + Environment.NewLine
+                + "Сумма " + String.Format("{0:.##}", summa) + Environment.NewLine
                 + "Статус операции " + transactStatus + Environment.NewLine
                 + "Номер акаунта " + accauntNumberT + Environment.NewLine 
                 + "Дата " + dateT;

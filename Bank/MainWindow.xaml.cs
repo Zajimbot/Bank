@@ -69,6 +69,11 @@ namespace Bank
             ComboListSort.Items.Add(user.FI() + Environment.NewLine + "Account namber " + account.AccauntN());
         }
        
+        private void Masege()
+        {
+            MessageBox.Show("Транзакция была выполнена успешна", "Сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
            
@@ -193,6 +198,8 @@ namespace Bank
                 transactionsL.Add(transaction);
                 Transaction transaction2 = new Transaction(NamingOperation.Transfer, TransactStatus.Completed, summa, bankAccountsL[output].AccauntN());
                 transactionsL.Add(transaction2);
+
+                Masege();
             }
             else
             {
@@ -243,31 +250,10 @@ namespace Bank
                     MessageBox.Show("Поля не заполнены", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-
-                if (TopAccountText.Text != "")
-                {
+                if(TopAccountText.Text != "")
                     summa = Convert.ToDouble(TopAccountText.Text);
-                    transaction = new Transaction(NamingOperation.Refill, TransactStatus.Completed, summa, bankAccountsL[index].AccauntN());
-                    transactionsL.Add(transaction);
-                }
                 else
-                {
                     summa = Convert.ToDouble(WithdrawMoney.Text);
-                    if(summa <= bankAccountsL[index].MoneyAccount)
-                    {
-                        summa = summa * (-1);
-                        transaction = new Transaction(NamingOperation.Withdrawal, TransactStatus.Completed, summa * -1, bankAccountsL[index].AccauntN());
-                        transactionsL.Add(transaction);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Недостаточно средств", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                        transaction = new Transaction(NamingOperation.Withdrawal, TransactStatus.NotCompleted, summa * -1, bankAccountsL[index].AccauntN());
-                        transactionsL.Add(transaction);
-                        OutListBankAccounts();
-                        return;
-                    }
-                }
 
             }
             catch (Exception error)
@@ -275,7 +261,32 @@ namespace Bank
                 MessageBox.Show(error.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            if (TopAccountText.Text != "")
+            {
 
+                transaction = new Transaction(NamingOperation.Refill, TransactStatus.Completed, summa, bankAccountsL[index].AccauntN());
+                transactionsL.Add(transaction);
+
+                Masege();
+            }
+            else
+            {
+                if (summa <= bankAccountsL[index].MoneyAccount)
+                {
+                    summa = summa * (-1);
+                    transaction = new Transaction(NamingOperation.Withdrawal, TransactStatus.Completed, summa * -1, bankAccountsL[index].AccauntN());
+                    transactionsL.Add(transaction);
+                    Masege();
+                }
+                else
+                {
+                    MessageBox.Show("Недостаточно средств", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    transaction = new Transaction(NamingOperation.Withdrawal, TransactStatus.NotCompleted, summa * -1, bankAccountsL[index].AccauntN());
+                    transactionsL.Add(transaction);
+                    OutListBankAccounts();
+                    return;
+                }
+            }
 
             bankAccountsL[index] += summa;
             
@@ -310,10 +321,7 @@ namespace Bank
                     MessageBox.Show(error.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-            }
-          
-
-           
+            } 
 
             if (button.Name == "All")
             {

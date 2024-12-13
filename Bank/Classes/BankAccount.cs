@@ -123,7 +123,7 @@ namespace Bank.Classes
                 + "Дата открытия счета " + this.dateOpen.ToString("dd MMMM, yyyy") + Environment.NewLine
                 + "Дата открытия вклада " + this.depositOpen.ToString("dd MMMM, yyyy") + Environment.NewLine
                 + "Срок вклада " + this.depositPeriod + " Месецев" + Environment.NewLine
-                + "Сумма на счету " + this.moneyAccount + " ₽" + Environment.NewLine
+                + "Сумма на счету " + String.Format("{0:.##}", this.moneyAccount) + " ₽" + Environment.NewLine
                 + "Статус " + this.status );
 
             return result;
