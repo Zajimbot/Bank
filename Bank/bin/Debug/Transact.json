@@ -1,0 +1,1 @@
+<ArrayOfTransaction xmlns="http://schemas.datacontract.org/2004/07/Bank.Classes" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Transaction><accauntNumberT>2</accauntNumberT><dateT>2024-12-25T10:29:54.4888649+03:00</dateT><operation>Refill</operation><summa>2</summa><transactStatus>Completed</transactStatus></Transaction></ArrayOfTransaction>

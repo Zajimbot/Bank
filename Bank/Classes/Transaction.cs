@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,7 @@ namespace Bank.Classes
         Transfer // Перевод
     }
 
+    [Serializable]
     internal class Transaction
     {
         private NamingOperation operation;
@@ -27,19 +29,27 @@ namespace Bank.Classes
         private int accauntNumberT;
         private DateTime dateT;
 
+        [DataMember]
         public NamingOperation Operation
         {
             get { return operation; }
         }
-
+        [DataMember]
         public TransactStatus TransactStatus
         {
             get { return transactStatus; }
         }
+        [DataMember]
+        public double Summa
+        {
+            get { return summa; }
+        }
+        [DataMember]
         public int AccauntNumberT
         { 
             get { return accauntNumberT; }
         }
+        [DataMember]
         public DateTime DateT
         {
             get { return dateT; }

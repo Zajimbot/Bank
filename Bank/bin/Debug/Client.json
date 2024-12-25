@@ -1,0 +1,1 @@
+<ArrayOfClient xmlns="http://schemas.datacontract.org/2004/07/Bank.Classes" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Client><birthDate>2024-12-11T00:00:00</birthDate><middleName>Ирекович</middleName><name>Артур</name><passportNumber>987654</passportNumber><passportSeries>1234</passportSeries><surname>Калимуллин</surname></Client></ArrayOfClient>

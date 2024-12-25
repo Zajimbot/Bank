@@ -2,6 +2,7 @@
 using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,6 +22,7 @@ namespace Bank.Classes
     /// <summary>
     /// int accountNumber, DateT dateOpen, double moneyAccount, DateT depositOpen, int depositPeriod // Срок вклада в месецах, Status status
     /// </summary>
+    [Serializable]
     public class BankAccount
     {
 
@@ -31,6 +33,20 @@ namespace Bank.Classes
         private int depositPeriod; // Срок вклада в месецах
         private Status status;//Статус 
 
+        [DataMember]
+        public int AccountNumber
+        {
+            get { return accountNumber; }
+        }
+        [DataMember]
+        public DateTime DateOpen {  get { return dateOpen; } }
+        [DataMember]
+        public DateTime DepoistOpen { get { return depositOpen; } }
+        [DataMember]
+        public int DepositPeriod { get { return depositPeriod; } }
+        [DataMember]
+        public Status Status { get { return status; } }
+        [DataMember]
         public double MoneyAccount
         {
             get { return this.moneyAccount; }

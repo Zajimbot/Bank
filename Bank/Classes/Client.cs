@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,7 @@ namespace Bank.Classes
     /// <summary>
     /// string name, string surname, string middleName, int passportNumber, DateT birthВate
     /// </summary>
+    [Serializable]
     internal class Client
     {
         private String name;
@@ -17,6 +19,19 @@ namespace Bank.Classes
         private int passportSeries;
         private int passportNumber;
         private DateTime birthDate; //Дата рождения 
+
+        [DataMember]
+        public String Name { get { return name; } }
+        [DataMember]
+        public String Surname { get { return surname; } }
+        [DataMember]
+        public String MiddleName { get { return middleName; } }
+        [DataMember]
+        public int PassportSeries { get { return passportSeries; } }
+        [DataMember]
+        public int PassportNumber { get { return passportNumber; } }
+        [DataMember]
+        public DateTime BirthDate { get {  return birthDate; } }
 
         /// <summary>
         /// Временный результат
@@ -53,7 +68,7 @@ namespace Bank.Classes
             this.birthDate = DateTime.Now;
         }
 
-        public int PassportNumber() { return passportNumber; }
+       
         /// <summary>
         /// string name, string surname, string middleName, int passportNumber, DateT birthВate
         /// </summary>

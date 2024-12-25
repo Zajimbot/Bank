@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml.Linq;
+using System.Runtime.Serialization;
+using System.IO;
 
 namespace Bank
 {
@@ -281,7 +283,7 @@ namespace Bank
                 else
                 {
                     MessageBox.Show("Недостаточно средств", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                    transaction = new Transaction(NamingOperation.Withdrawal, TransactStatus.NotCompleted, summa * -1, bankAccountsL[index].AccauntN());
+                    transaction = new Transaction(NamingOperation.Withdrawal, TransactStatus.NotCompleted, summa * 1, bankAccountsL[index].AccauntN());
                     transactionsL.Add(transaction);
                     OutListBankAccounts();
                     return;
@@ -373,6 +375,73 @@ namespace Bank
             {
                 TransactionsList.Text += transaction.Sresult() + Environment.NewLine + "***********************" + Environment.NewLine;
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (FileStream file = new FileStream("Account.json", FileMode.Open))
+                {
+                    bankAccountsL = (List<Classes.BankAccount>)jsonAccount.ReadObject(file);
+                    //file.Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Нет файла", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            try
+            {
+                using (FileStream file = new FileStream("Client.json", FileMode.Open))
+                {
+                    clients = (List<Classes.Client>)jsonClient.ReadObject(file);
+                    //file.Close();
+                }
+            }
+            catch {
+                MessageBox.Show("Нет файла", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+           try
+            {
+                using (FileStream file = new FileStream("Transact.json", FileMode.Open))
+                {
+                    transactionsL = (List<Classes.Transaction>)jsonTransact.ReadObject(file);
+                    //file.Close();
+                }
+            }
+            catch 
+            {
+                MessageBox.Show("Нет файла", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+                
+            OutListBankAccounts();
+
+        }
+        DataContractSerializer jsonAccount = new DataContractSerializer(typeof(List<BankAccount>));
+        DataContractSerializer jsonClient = new DataContractSerializer(typeof(List<Client>));
+        DataContractSerializer jsonTransact = new DataContractSerializer(typeof(List<Transaction>));
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            using (FileStream file = new FileStream("Account.json", FileMode.Create))
+            {
+                jsonAccount.WriteObject(file, bankAccountsL);
+                //file.Close();
+            }
+            using(FileStream file = new FileStream("Client.json", FileMode.Create))
+            {
+                jsonClient.WriteObject(file, clients);
+                //file.Close();
+            }
+            using(FileStream file = new FileStream("Transact.json", FileMode.Create))
+            {
+                jsonTransact.WriteObject(file, transactionsL);
+                //file.Close();
+            }
+            MessageBox.Show("Данные удачно сохранены", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
